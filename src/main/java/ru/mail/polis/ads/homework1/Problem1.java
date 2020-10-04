@@ -1,4 +1,4 @@
-package ru.mail.polis.ads;
+package ru.mail.polis.ads.homework1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,13 +10,11 @@ import java.util.StringTokenizer;
 /**
  * Problem solution template.
  */
-public final class SolveTemplate {
-    private SolveTemplate() {
-        // Should not be instantiated
-    }
+public class Problem1 {
 
     private static void solve(final FastScanner in, final PrintWriter out) {
-        // Write me
+         int num = Integer.parseInt(in.next());
+         out.write(num / 10 + " " + num % 10);
     }
 
     private static class FastScanner {
