@@ -145,13 +145,10 @@ public class AvlBst<Key extends Comparable<Key>, Value>
     }
 
     private Node min(Node x) {
-        Node currentNode = x;
-
-        while (currentNode.left != null) {
-            currentNode = currentNode.left;
+        if (x == null) {
+            return null;
         }
-
-        return currentNode;
+        return x.left == null ? x : min(x.left);
     }
 
     @Override
@@ -168,13 +165,10 @@ public class AvlBst<Key extends Comparable<Key>, Value>
     }
 
     private Node max(Node x) {
-        Node currentNode = x;
-
-        while (currentNode.right != null) {
-            currentNode = currentNode.right;
+        if (x == null) {
+            return null;
         }
-
-        return currentNode;
+        return x.right == null ? x : max(x.right);
     }
 
     @Override
@@ -196,11 +190,11 @@ public class AvlBst<Key extends Comparable<Key>, Value>
             return null;
         }
 
-        if (x.key == key) {
+        if (key.compareTo(x.key) == 0) {
             return x;
         }
 
-        if (x.key.compareTo(key) > 0) {
+        if (key.compareTo(x.key) < 0) {
             return floor(x.left, key);
         }
 
@@ -221,11 +215,11 @@ public class AvlBst<Key extends Comparable<Key>, Value>
             return null;
         }
 
-        if (x.key == key) {
+        if (key.compareTo(x.key) == 0) {
             return x;
         }
 
-        if (x.key.compareTo(key) < 0) {
+        if (key.compareTo(x.key) > 0) {
             return ceil(x.right, key);
         }
 
@@ -292,7 +286,7 @@ public class AvlBst<Key extends Comparable<Key>, Value>
                 x.right = rotateRight(x.right);
             }
 
-            return rotateRight(x);
+            return rotateLeft(x);
         }
 
         return x;
